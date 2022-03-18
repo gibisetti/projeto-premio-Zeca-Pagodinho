@@ -1,0 +1,51 @@
+<mat-nav-list>
+    <form class="form_name">
+        <mat-form-field appearance="fill">
+            <mat-label>selecione o nome</mat-label>
+            <mat-select [(ngModel)]="selectedValue" name="name">
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let name of names" [value]="name.viewName">
+                    {{name.viewName}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="example-button-row">
+            <button *ngIf="!selectedValue" mat-icon-button>
+                <mat-icon (click)="openNewName()">add</mat-icon>
+            </button>
+        </div>
+        <!-- <p> Selecionado: {{selectedValue}} </p> -->
+    </form>
+</mat-nav-list>
+
+<!-- <form> -->
+<mat-form-field *ngIf="show && !selectedValue" appearance="fill">
+    <mat-label>nome completo</mat-label>
+    <input matInput type="text">
+</mat-form-field>
+
+<!-- ------------------------------------------------     -->
+<mat-form-field appearance="fill">
+    <mat-label>Cerveja</mat-label>
+    <input matInput type="number" [(ngModel)]="cerveja" (blur)='calcularSoma()'>
+</mat-form-field>
+{{ totalCerveja }}
+
+<mat-form-field appearance="fill">
+    <mat-label>Drink</mat-label>
+    <input matInput type="number" [(ngModel)]="drink" (blur)='calcularSoma()'>
+</mat-form-field>
+{{ totalDrink }}
+
+<mat-form-field appearance="fill">
+    <mat-label>Destilado</mat-label>
+    <input matInput type="number" [(ngModel)]="destilado" (blur)='calcularSoma()'>
+</mat-form-field>
+{{ totalDestilado }}
+<!-- ------------------------------------------------     -->
+
+<!-- <button (click)="calcularSoma()" class="btn btn-primary">Calcular</button> -->
+
+<p class="valor-total">{{ valorTotal }}</p>
+<button mat-button>Salvar</button>
+<!-- </form> -->
